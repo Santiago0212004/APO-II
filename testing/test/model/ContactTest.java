@@ -15,9 +15,6 @@ class ContactTest {
 		contact = null;
 	}
 	
-	public void setupStage2() {
-		
-	}
 	
 	@Test
 	void createNewContact() {
