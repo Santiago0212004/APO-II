@@ -5,12 +5,14 @@ import java.util.Date;
 public class Vehicle {
 	public Date entryDate;
 	public String licensePlate;
+	public String driverId;
 	public Type type;
 	
 	
-	public Vehicle(Date entryDate, String licensePlate, Type type) {
-		this.entryDate = entryDate;
+	public Vehicle(String licensePlate, String driverId, Type type) {
+		this.entryDate = new Date();
 		this.licensePlate = licensePlate;
+		this.driverId = driverId;
 		this.type = type;
 	}
 
@@ -32,6 +34,16 @@ public class Vehicle {
 
 	public void setLicensePlate(String licensePlate) {
 		this.licensePlate = licensePlate;
+	}
+
+	
+	public String getDriverId() {
+		return driverId;
+	}
+
+
+	public void setDriverId(String driverId) {
+		this.driverId = driverId;
 	}
 
 
