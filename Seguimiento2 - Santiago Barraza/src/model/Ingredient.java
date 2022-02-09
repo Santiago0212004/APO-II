@@ -27,7 +27,7 @@ public class Ingredient {
 			weight = weight + additionalW;
 		}
 	}
-	
+
 	public void removeWeight(double additionalW) throws NegativeNumberException{
 		if(additionalW<0) {
 			throw new NegativeNumberException();

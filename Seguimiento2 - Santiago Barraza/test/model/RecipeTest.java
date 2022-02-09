@@ -45,5 +45,30 @@ class RecipeTest {
 		
 		assertEquals(6,ingredients.get(ingredients.size()-1).getWeight());
 	}
+	
+	@Test
+	void test3() {
+		setupStage2();
+		
+		List<Ingredient> ingredients = recipe.getIngredients();
+		
+		recipe.addIngredient("Ajo", 21);
+		
+		assertEquals(3, ingredients.size());
+		
+		assertEquals(79,ingredients.get(1).getWeight());
+		
+	}
+	
+	@Test
+	void test4() {
+		setupStage2();
+		
+		List<Ingredient> ingredients = recipe.getIngredients();
+		
+		recipe.removeIngredient("Ajo");
+		
+		assertEquals(2, ingredients.size());
+	}
 
 }

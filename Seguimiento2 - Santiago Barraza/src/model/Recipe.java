@@ -35,6 +35,15 @@ public class Recipe {
 		}		
 	}
 	
+	public void removeIngredient(String n) {
+		for(int i=0; i<ingredients.size(); i++) {
+			if(n.equalsIgnoreCase(ingredients.get(i).getName())) {
+				ingredients.remove(i);
+				break;
+			}
+		}
+	}
+	
 	public List<Ingredient> getIngredients(){
 		return ingredients;
 	}
