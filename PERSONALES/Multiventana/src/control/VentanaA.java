@@ -1,6 +1,5 @@
 package control;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -23,6 +22,9 @@ public class VentanaA implements Initializable{
     @FXML
     private Button submitBTM;
     
+    @FXML
+    private Button showBTM;
+    
     private String email;
     
     public VentanaA() {
@@ -30,26 +32,35 @@ public class VentanaA implements Initializable{
     	
     }
     
+   
+    
     @FXML
     void submit(ActionEvent event) throws Exception {
     	
+    	email = emailTF.getText();
+    	EmailsData.emails.add(email);
+    	
+    	
+		
+    }
+    
+
+    @FXML
+    void show(ActionEvent event) throws Exception {
     	FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/VentanaB.fxml"));
-		loader.setController(new VentanaB(emailTF.getText()));
-		
-		
-		
+		loader.setController(new VentanaB());
 		Parent parent = (Parent) loader.load();
+		
 		Scene scene = new Scene(parent);
 		Stage stage = new Stage();
 		stage.setScene(scene);
 		stage.show();
-		
     }
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		emailTF.setText(email);
+		
 	}
 	
 	
