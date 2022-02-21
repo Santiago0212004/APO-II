@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="exceptions/src"/>
+	<classpathentry kind="src" path="GUI/src"/>
+	<classpathentry kind="src" path="Libreta/src"/>
+	<classpathentry kind="src" path="Multiventana/src"/>
+	<classpathentry kind="src" path="testing/src"/>
+	<classpathentry kind="src" path="testing/test"/>
+	<classpathentry kind="src" path="wallet/src"/>
+	<classpathentry kind="output" path="GUI/bin"/>
+</classpath>
