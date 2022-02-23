@@ -7,7 +7,7 @@ public class Student {
 	private int id;
 	
 	
-	public Student(String name, int id, String code) {
+	public Student(String name, String code, int id) {
 		this.name = name;
 		this.code = code;
 		this.id = id;

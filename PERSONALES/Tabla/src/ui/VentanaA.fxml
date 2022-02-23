@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView fx:id="studentTable" layoutX="74.0" layoutY="28.0" prefHeight="344.0" prefWidth="453.0">
+      <TableView fx:id="studentTable" layoutX="74.0" layoutY="41.0" prefHeight="344.0" prefWidth="453.0">
         <columns>
           <TableColumn fx:id="nameCol" prefWidth="75.0" text="Nombre" />
           <TableColumn fx:id="codeCol" prefWidth="75.0" text="Código" />
@@ -17,6 +21,21 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="addBTN" layoutX="548.0" layoutY="360.0" mnemonicParsing="false" onAction="#addStudent" text="Add" />
+      <MenuBar layoutY="2.0">
+        <menus>
+            <Menu mnemonicParsing="false" text="Archivo">
+              <items>
+                  <Menu mnemonicParsing="false" text="Nuevo">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#addStudent" text="Estudiante" />
+                    </items>
+                  </Menu>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#exit" text="Salir" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <Button layoutX="534.0" layoutY="350.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
    </children>
 </AnchorPane>

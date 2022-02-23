@@ -3,13 +3,20 @@ package control;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import main.Main;
 import model.Student;
 import model.StudentData;
 
@@ -30,6 +37,8 @@ public class VentanaA implements Initializable {
     
     @FXML
     private Button addBTN;
+    
+    private Student stClicked;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -39,11 +48,33 @@ public class VentanaA implements Initializable {
 		
 		studentTable.setItems(StudentData.data);
 		
+		studentTable.setOnMouseClicked(event -> {
+			stClicked = studentTable.getSelectionModel().getSelectedItem();
+		});
 	}
 	
-	@FXML
-    void addStudent(ActionEvent event) {
-		StudentData.data.add(new Student("Santiago Barraza", 1044607243, "A00375190"));
+    @FXML
+    void addStudent(ActionEvent event) throws Exception {
+    	FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/VentanaB.fxml"));
+		loader.setController(new VentanaB());
+		Parent parent = (Parent) loader.load();
+		Stage stage = new Stage();
+		Scene scene = new Scene(parent);
+		stage.setScene(scene);
+		stage.show();
+		
     }
 
+    @FXML
+    void exit(ActionEvent event) {
+    	Platform.exit();
+    	System.exit(0);
+    }
+	
+    @FXML
+    void delete(ActionEvent event) {
+    	StudentData.data.remove(stClicked);
+    }
+	
+	
 }
