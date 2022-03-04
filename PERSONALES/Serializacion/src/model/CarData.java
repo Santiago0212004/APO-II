@@ -1,10 +1,12 @@
 package model;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -85,6 +87,9 @@ public class CarData implements Serializable{
 			FileOutputStream fos = new FileOutputStream(file);
 			fos.write(json.getBytes());
 			fos.close();
+			
+			
+			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -95,6 +100,33 @@ public class CarData implements Serializable{
 	}
 	
 	public void loadJSON() {
+		FileInputStream fis;
+		try {
+			fis = new FileInputStream(new File("data.json"));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
+			
+			String line;
+			String json = "";
+			while((line = reader.readLine())!=null) {
+				json += line;
+			}
+			
+			System.out.println(json);
+			
+			Gson gson = new Gson();
+			CarData data = gson.fromJson(json,CarData.class);
+			
+			this.cars = data.cars;
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		
 	}
 	

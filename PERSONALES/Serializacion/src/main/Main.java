@@ -9,13 +9,14 @@ public class Main {
 		CarData data = new CarData();
 		
 
-		data.addCar(new Car("Santiago Barraza","BMW"));
-		data.addCar(new Car("Pepe Perez","Chevrolet"));
-		data.addCar(new Car("Armando Paredes","Audi"));
+		//data.addCar(new Car("Santiago Barraza","BMW"));
+		//data.addCar(new Car("Pepe Perez","Chevrolet"));
+		//data.addCar(new Car("Armando Paredes","Audi"));
 		
 		System.out.println("\n");
-		data.saveJSON();
-		data.print();
+		//data.saveJSON();
+		data.loadJSON();
+
 		
 	}
 
