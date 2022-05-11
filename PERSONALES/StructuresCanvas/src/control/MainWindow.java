@@ -1,12 +1,14 @@
 package control;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
+import screens.BaseScreen;
 import screens.ScreenA;
 import screens.ScreenB;
 
@@ -14,25 +16,29 @@ public class MainWindow implements Initializable {
 
 	@FXML
 	private Canvas canvas;
-	private GraphicsContext gc;
 	
 	public static int SCREEN = 0;
+	public static int x;
+	public static int y;
 	
-	private ScreenA screenA;
-	private ScreenB screenB;
+	private ArrayList<BaseScreen> screens;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-	
-		screenA = new ScreenA(canvas);
-		screenB = new ScreenB(canvas);
 		
-		gc = canvas.getGraphicsContext2D();
+		screens = new ArrayList<>();
+		
+		screens.add(new ScreenA(canvas));
+		screens.add(new ScreenB(canvas));
+
+		
 		canvas.setFocusTraversable(true);
 		new Thread(() -> {
 			while (true) {
-				paint();
-				pause(50);
+				Platform.runLater(()->{
+					paint();
+				});
+				pause(1);
 			}
 		}).start();
 		
@@ -40,37 +46,20 @@ public class MainWindow implements Initializable {
 	}
 	
 	private void paint() {
-		switch(SCREEN) {
-			case 0:
-				screenA.paint();
-				break;
-			case 1:
-				screenB.paint();
-				break;
-		}
+		screens.get(SCREEN).paint();
 	}
 
 	public void initEvents() {
 		canvas.setOnMouseClicked(e -> {
-			switch(SCREEN) {
-				case 0:
-					screenA.onClick(e);
-					break;
-				case 1:
-					screenB.onClick(e);
-					break;
-			}
+			screens.get(SCREEN).onClick(e);
 		});
 		
 		canvas.setOnKeyPressed(e-> {
-			switch(SCREEN) {
-			case 0:
-				screenA.onKey(e);
-				break;
-			case 1:
-				screenB.onKey(e);
-				break;
-			}
+			screens.get(SCREEN).onKey(e);
+		});
+		
+		canvas.setOnKeyReleased(e-> {
+			screens.get(SCREEN).onKey(e);
 		});
 	}
 	
