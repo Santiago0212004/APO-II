@@ -18,8 +18,8 @@ public class MainWindow implements Initializable {
 	private Canvas canvas;
 	
 	public static int SCREEN = 0;
-	public static int x;
-	public static int y;
+	public int x;
+	public int y;
 	
 	private ArrayList<BaseScreen> screens;
 
@@ -38,7 +38,7 @@ public class MainWindow implements Initializable {
 				Platform.runLater(()->{
 					paint();
 				});
-				pause(1);
+				pause(50);
 			}
 		}).start();
 		

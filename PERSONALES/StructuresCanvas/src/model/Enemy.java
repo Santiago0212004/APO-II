@@ -1,26 +1,26 @@
-package main;
+package model;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import control.MainWindow;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-public class Avatar {
+public class Enemy {
 
 	private Canvas canvas;
-	private GraphicsContext gc;
-
-	
+	private GraphicsContext gc;	
 	private Image image;
 	
-	public Avatar(Canvas canvas) {
+	private int x = 400;
+	private int y = 0;
+	
+	public Enemy(Canvas canvas) {
 		this.canvas = canvas;
 		gc = canvas.getGraphicsContext2D();
 		
-		File file = new File("src/image/goku.png");
+		File file = new File("src/image/vegeta.png");
 		try {
 			image = new Image(new FileInputStream(file));
 		} catch (FileNotFoundException e) {
@@ -29,15 +29,32 @@ public class Avatar {
 	}
 	
 	public void paint() {
-		gc.drawImage(image, MainWindow.x, MainWindow.y);
+		gc.drawImage(image, x, y);
 	}
 	
 	public void moveX(int xMove) {
-		MainWindow.x += xMove;
+		x += xMove;
 	}
 	
 	public void moveY(int yMove) {
-		MainWindow.y += yMove;
+		y += yMove;
 	}
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+	
 	
 }

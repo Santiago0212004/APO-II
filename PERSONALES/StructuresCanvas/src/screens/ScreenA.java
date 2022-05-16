@@ -6,7 +6,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import main.Avatar;
+import model.Avatar;
 
 public class ScreenA extends BaseScreen {
 	
