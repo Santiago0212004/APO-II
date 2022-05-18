@@ -5,12 +5,12 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class Bullet {
-	private Canvas canvas;
-	private GraphicsContext gc;
+	protected Canvas canvas;
+	protected GraphicsContext gc;
 	
-	private int x,y;
-	private int size;
-	private int speed;
+	protected int x,y;
+	protected int size;
+	protected int speed;
 	
 	public Bullet(Canvas canvas, int x, int y) {
 		 this.canvas = canvas;
@@ -18,7 +18,7 @@ public class Bullet {
 		 this.x = x;
 		 this.y = y;
 		 this.size = 10;
-		 this.speed = 30;
+		 this.speed = 1;
 	}
 	
 	public void paint() {

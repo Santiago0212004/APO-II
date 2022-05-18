@@ -38,7 +38,7 @@ public class MainWindow implements Initializable {
 				Platform.runLater(()->{
 					paint();
 				});
-				pause(50);
+				pause(1);
 			}
 		}).start();
 		
